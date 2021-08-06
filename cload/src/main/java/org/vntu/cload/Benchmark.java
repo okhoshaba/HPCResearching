@@ -43,13 +43,12 @@ public class Benchmark {
   public void buildBenchmark() {
 
 //    Long periodOfTime = 1000/(Long.parseLong(series) * Long.parseLong(requests) );
-
     for (int count = 0; count < 30; count++) {
       Thread object = new Thread(new RunBenchmark());
       object.start();
 //      Thread.sleep(periodOfTime);
       try {
-        Thread.sleep(50);
+        Thread.sleep(5);
        } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
           throw new AssertionError(e);
@@ -71,7 +70,7 @@ Runtime runtime = Runtime.getRuntime();
 // For diagnostic only
 process.waitFor();
 //System.out.println("u1 ; 1 ; u2 ; " + Number.globalNumber++ + "; y ; " + (System.currentTimeMillis() - start));
-System.out.println("u1 ; 1 ; u2 ; 1 ; y ; " + (System.currentTimeMillis() - start));
+System.out.println("u1 ; " + Number.globalNumber++ + " ; y ; " + (System.currentTimeMillis() - start));
 }
 catch (Exception e)   {     // Throwing an exception
 System.out.println ("Exception is caught");
@@ -79,5 +78,8 @@ System.out.println ("Exception is caught");
 }
 }
 
+class Number {    
+  static int globalNumber = 1;    
+} 
 
 
