@@ -42,12 +42,12 @@ public class Benchmark {
 //  public void buildBenchmark() throws InterruptedException {
   public void buildBenchmark() {
     int limit_series = Integer.parseInt(this.series);
-    Long periodOfTime = 1000/(Long.parseLong(series) * Long.parseLong(requests) );
+    Long periodOfTime = 1000/(Long.parseLong(this.series) * Long.parseLong(this.requests) );
 
     System.out.println("For diagnostic purpose only: var periodOfTime = " + periodOfTime);
 
     for (int count = 0; count < limit_series; count++) {
-      Thread object = new Thread(new RunBenchmark());
+      Thread object = new Thread(new RunBenchmark(this.address, this.port));
       object.start();
       try {
         Thread.sleep(periodOfTime);
@@ -60,19 +60,24 @@ public class Benchmark {
 }
 
 class RunBenchmark implements Runnable {
-  
+  String address;
+  String port;
+
+  RunBenchmark(String address, String port) {
+    this.address = address;
+    this.port = port;
+  } 
   public void run() {
-    try   {     // Displaying the thread that is running
+    try   {
       long start = System.currentTimeMillis();
 
       Runtime runtime = Runtime.getRuntime();
-      Process process = runtime.exec("curl " + "localhost:8081" + " > /dev/null 2>&1");
-//      Process process = runtime.exec("curl " + n + ":" + this.port + " > /dev/null 2>&1");
-//  Process process = runtime.exec("curl localhost:8081 > /dev/null 2>&1");
-// For diagnostic only
+//    System.out.println("For diagnostic purpose only: var address = " + this.address + " , port: " + this.port);
+      Process process = runtime.exec("curl " + this.address + ":" + this.port + " > /dev/null 2>&1");
       process.waitFor();
-//System.out.println("u1 ; 1 ; u2 ; " + Number.globalNumber++ + "; y ; " + (System.currentTimeMillis() - start));
       System.out.println("u1 ; " + Number.globalNumber++ + " ; y ; " + (System.currentTimeMillis() - start));
+
+// For save to Disk:
     }
     catch (Exception e)   {     // Throwing an exception
       System.out.println ("Exception is caught");
