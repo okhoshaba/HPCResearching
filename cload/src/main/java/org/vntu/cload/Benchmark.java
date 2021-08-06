@@ -47,7 +47,7 @@ public class Benchmark {
     System.out.println("For diagnostic purpose only: var periodOfTime = " + periodOfTime);
 
     for (int count = 0; count < limit_series; count++) {
-      Thread object = new Thread(new RunBenchmark(this.address, this.port));
+      Thread object = new Thread(new RunBenchmark(this.address, this.port, this.requests));
       object.start();
       try {
         Thread.sleep(periodOfTime);
@@ -62,20 +62,26 @@ public class Benchmark {
 class RunBenchmark implements Runnable {
   String address;
   String port;
+  int requests;
 
-  RunBenchmark(String address, String port) {
+  RunBenchmark(String address, String port, String requests) {
     this.address = address;
     this.port = port;
+    this.requests = Integer.parseInt(requests);
   } 
+
   public void run() {
     try   {
-      long start = System.currentTimeMillis();
+      long start, stop;
 
+    for (int count = 0; count < this.requests; count++) {
+      start = System.currentTimeMillis();
       Runtime runtime = Runtime.getRuntime();
-//    System.out.println("For diagnostic purpose only: var address = " + this.address + " , port: " + this.port);
       Process process = runtime.exec("curl " + this.address + ":" + this.port + " > /dev/null 2>&1");
       process.waitFor();
-      System.out.println("u1 ; " + Number.globalNumber++ + " ; y ; " + (System.currentTimeMillis() - start));
+      stop = System.currentTimeMillis();
+      System.out.println("number = " + Number.globalNumber++ + " start = " + start + " stop = " + stop + " ; total = ; " + (stop - start));
+    }
 
 // For save to Disk:
     }
