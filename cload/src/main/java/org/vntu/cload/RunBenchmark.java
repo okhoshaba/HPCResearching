@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import com.opencsv.CSVWriter;
 
 class RunBenchmark implements Runnable {
+  static int globalNumber = 0;    
   String address;
   String port;
   int requests;
@@ -35,7 +36,8 @@ CSVWriter writer = new CSVWriter(outputfile);
       process.waitFor();
       stop = System.currentTimeMillis();
       responceTime = stop - start;
-      Numbers.globalNumber++;
+//      Numbers.globalNumber++;
+      globalNumber++;
 
 // For diagnostic purpose
 //      System.out.println("number = " + Number.globalNumber++ + " start = " + start + " stop = " + stop + " ; total = ; " + (stop - start));
@@ -46,7 +48,8 @@ CSVWriter writer = new CSVWriter(outputfile);
 
   
 // add data to csv
-      String[] data = { String.valueOf(Numbers.globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
+//      String[] data = { String.valueOf(Numbers.globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
+      String[] data = { String.valueOf(globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
 
 writer.writeNext(data);
   
@@ -66,8 +69,8 @@ writer.close();
   }
 }
 
-class Numbers {    
-  static int globalNumber = 0;    
-} 
+//class Numbers {    
+//  static int globalNumber = 0;    
+//} 
 
 
