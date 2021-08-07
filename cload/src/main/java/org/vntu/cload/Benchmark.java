@@ -51,6 +51,7 @@ public class Benchmark {
 
     System.out.println("For diagnostic purpose only: var periodOfTime = " + periodOfTime);
 
+    for (int icount = 0; icount < 10; icount++) 
     for (int count = 0; count < limit_series; count++) {
       Thread object = new Thread(new RunBenchmark(this.address, this.port, this.requests));
       object.start();
@@ -59,9 +60,9 @@ public class Benchmark {
        } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
           throw new AssertionError(e);
-        }
-      }
-    }
+       }
+     }
+   }
 }
 
 class RunBenchmark implements Runnable {
