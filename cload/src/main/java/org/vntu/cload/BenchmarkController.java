@@ -13,13 +13,13 @@ public class BenchmarkController {
 
     boolean isNumeric, isLoad = true;
 
-    Benchmark benchmark = new Benchmark();
-    benchmark.setAddress(address);
-    benchmark.setPort(port);
-    benchmark.setSeries(series);
-    benchmark.setRequests(requests);
+    InputData inputData = new InputData();
+    inputData.setAddress(address);
+    inputData.setPort(port);
+    inputData.setSeries(series);
+    inputData.setRequests(requests);
 
-  	model.addAttribute("address", benchmark.getAddress());
+  	model.addAttribute("address", inputData.getAddress());
 
     isNumeric = port.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -27,7 +27,7 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	  model.addAttribute("port", benchmark.getPort());
+  	  model.addAttribute("port", inputData.getPort());
 
     isNumeric = series.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -35,7 +35,7 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	  model.addAttribute("series", benchmark.getSeries());
+  	  model.addAttribute("series", inputData.getSeries());
 
     isNumeric = requests.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -43,10 +43,10 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	model.addAttribute("requests", benchmark.getRequests());
+  	model.addAttribute("requests", inputData.getRequests());
 
     if (isLoad == true) {
-      benchmark.buildBenchmark();
+      inputData.buildBenchmark();
       return "results";
     }
     else
