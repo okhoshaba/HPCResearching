@@ -77,7 +77,15 @@ class RunBenchmark implements Runnable {
 
   public void run() {
     try   {
-      long start, stop;
+      long start, stop, responceTime;
+
+// For save to Disk:
+File file = new File("data.txt");
+FileWriter outputfile = new FileWriter(file, true);
+  
+// create CSVWriter object filewriter object as parameter
+CSVWriter writer = new CSVWriter(outputfile);
+  
 
     for (int count = 0; count < this.requests; count++) {
       start = System.currentTimeMillis();
@@ -85,27 +93,23 @@ class RunBenchmark implements Runnable {
       Process process = runtime.exec("curl " + this.address + ":" + this.port + " > /dev/null 2>&1");
       process.waitFor();
       stop = System.currentTimeMillis();
-      System.out.println("number = " + Number.globalNumber++ + " start = " + start + " stop = " + stop + " ; total = ; " + (stop - start));
-    }
+      responceTime = stop - start;
+      Numbers.globalNumber++;
 
-// For save to Disk:
-File file = new File("data.txt");
-FileWriter outputfile = new FileWriter(file, true);
-//FileWriter outputfile = new FileWriter(file);
-  
-// create CSVWriter object filewriter object as parameter
-CSVWriter writer = new CSVWriter(outputfile);
-  
+// For diagnostic purpose
+//      System.out.println("number = " + Number.globalNumber++ + " start = " + start + " stop = " + stop + " ; total = ; " + (stop - start));
+
 // adding header to csv
-String[] header = { "Number", "Start", "Stop", "Total" };
-writer.writeNext(header);
+//      String[] header = { "Number", "Start", "Stop", "Total" };
+//      writer.writeNext(header);
 
   
 // add data to csv
-String[] data = { "Aman", "10", "620" };
+      String[] data = { String.valueOf(Numbers.globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
 
 writer.writeNext(data);
   
+    }
 // closing writer connection
 writer.close();
 // }
@@ -121,8 +125,8 @@ writer.close();
   }
 }
 
-class Number {    
-  static int globalNumber = 1;    
+class Numbers {    
+  static int globalNumber = 0;    
 } 
 
 

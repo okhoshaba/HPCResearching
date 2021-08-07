@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BenchmarkController {
 
 	@GetMapping("/cload")
-  public String loading(@RequestParam(required = false, defaultValue = "localhost") String address, @RequestParam(required=false, defaultValue="8081") String port, @RequestParam(required = false, defaultValue = "50") String series, @RequestParam(required = false, defaultValue = "1") String requests, Model model) {
+  public String loading(@RequestParam(required = false, defaultValue = "localhost") String address, @RequestParam(required=false, defaultValue="8181") String port, @RequestParam(required = false, defaultValue = "50") String series, @RequestParam(required = false, defaultValue = "1") String requests, Model model) {
 
     boolean isNumeric, isLoad = true;
 
