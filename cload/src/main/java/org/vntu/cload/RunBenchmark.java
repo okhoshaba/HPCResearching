@@ -9,12 +9,14 @@ class RunBenchmark implements Runnable {
   static int globalNumber = 0;    
   String address;
   String port;
+  String fileName;
   int requests;
 
-  RunBenchmark(String address, String port, String requests) {
+  RunBenchmark(String address, String port, String requests, String fileName) {
     this.address = address;
     this.port = port;
     this.requests = Integer.parseInt(requests);
+    this.fileName = fileName;
   } 
 
   public void run() {
@@ -22,7 +24,8 @@ class RunBenchmark implements Runnable {
       long start, stop, responceTime;
 
 // For save to Disk:
-File file = new File("data.txt");
+File file = new File(this.fileName);
+//File file = new File("data.txt");
 FileWriter outputfile = new FileWriter(file, true);
   
 // create CSVWriter object filewriter object as parameter
@@ -56,21 +59,11 @@ writer.writeNext(data);
     }
 // closing writer connection
 writer.close();
-// }
-
-//catch (IOException e) {
-//e.printStackTrace();
-//}
-
     }
     catch (Exception e)   {     // Throwing an exception
       System.out.println ("Exception is caught");
     }
   }
 }
-
-//class Numbers {    
-//  static int globalNumber = 0;    
-//} 
 
 

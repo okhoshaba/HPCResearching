@@ -65,7 +65,7 @@ public class InputData {
 
     for (int durationCount = 0; durationCount < limit_duration; durationCount++) 
       for (int count = 0; count < limit_series; count++) {
-        Thread object = new Thread(new RunBenchmark(this.address, this.port, this.requests));
+        Thread object = new Thread(new RunBenchmark(this.address, this.port, this.requests, this.fileName));
         object.start();
         try {
           Thread.sleep(periodOfTime);

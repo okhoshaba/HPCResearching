@@ -10,7 +10,7 @@ curl localhost:8080/cload?address=lala\&port=2020
 curl localhost:8080/cload?address=lala\&port=2020\&series=3
 curl localhost:8080/cload?address=lala\&port=2020\&series=3\&requests=5
 curl localhost:8080/cload?address=lala\&port=2020\&series=3\&requests=5\&dt=17
-curl localhost:8080/cload?address=lala\&port=2020\&series=3\&requests=5\&dt=17\&file=data.txt
+curl localhost:8080/cload?address=lala\&port=2020\&series=3\&requests=5\&dt=17\&fileName=data22.txt
 
 
 For useful links:
