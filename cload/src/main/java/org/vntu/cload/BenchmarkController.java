@@ -19,9 +19,9 @@ public class BenchmarkController {
     dataForRunBenchmark.setRequests(requests);
     dataForRunBenchmark.setFileName(fileName);
 
-    InputData inputData = new InputData();
-    inputData.setSeries(series);
-    inputData.setDurationTime(durationTime);
+    DataForBuildBenchmark dataForBuildBenchmark = new DataForBuildBenchmark();
+    dataForBuildBenchmark.setSeries(series);
+    dataForBuildBenchmark.setDurationTime(durationTime);
 
   	model.addAttribute("address", dataForRunBenchmark.getAddress());
 
@@ -39,7 +39,7 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	  model.addAttribute("series", inputData.getSeries());
+  	  model.addAttribute("series", dataForBuildBenchmark.getSeries());
 
     isNumeric = requests.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -55,12 +55,12 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	  model.addAttribute("durationTime", inputData.getDurationTime());
+  	  model.addAttribute("durationTime", dataForBuildBenchmark.getDurationTime());
 
     model.addAttribute("fileName", dataForRunBenchmark.getFileName());
 
     if (isLoad == true) {
-      inputData.buildBenchmark(dataForRunBenchmark);
+      dataForBuildBenchmark.buildBenchmark(dataForRunBenchmark);
       return "results";
     }
     else

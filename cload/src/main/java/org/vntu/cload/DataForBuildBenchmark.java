@@ -1,6 +1,6 @@
 package org.vntu.cload;
 
-public class InputData {
+public class DataForBuildBenchmark {
 
   private String series;
   private String durationTime;
