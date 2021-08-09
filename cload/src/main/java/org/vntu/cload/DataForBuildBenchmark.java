@@ -29,8 +29,7 @@ public class DataForBuildBenchmark {
     System.out.println("For diagnostic purpose only: var periodOfTime = " + periodOfTime);
 
     for (int durationCount = 0; durationCount < limit_duration; durationCount++) 
-      for (int count = 0; count < limit_series; count++) {
-//        Thread object = new Thread(new RunBenchmark(this.address, this.port, this.requests, this.fileName));
+      for (int seriesCount = 0; seriesCount < limit_series; seriesCount++) {
         Thread object = new Thread(new RunBenchmark(dataForRunBenchmark));
         object.start();
         try {

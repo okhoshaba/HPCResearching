@@ -12,7 +12,6 @@ class RunBenchmark implements Runnable {
   String fileName;
   int requests;
 
-//  RunBenchmark(String address, String port, String requests, String fileName) {
   RunBenchmark(DataForRunBenchmark dataForRunBenchmark) {
     this.address = dataForRunBenchmark.getAddress();
     this.port = dataForRunBenchmark.getPort();
@@ -25,12 +24,12 @@ class RunBenchmark implements Runnable {
       long start, stop, responceTime;
 
 // For save to Disk:
-  File file = new File(this.fileName);
+    File file = new File(this.fileName);
 //File file = new File("data.txt");
-  FileWriter outputfile = new FileWriter(file, true);
+    FileWriter outputfile = new FileWriter(file, true);
   
 // create CSVWriter object filewriter object as parameter
-  CSVWriter writer = new CSVWriter(outputfile);
+    CSVWriter writer = new CSVWriter(outputfile);
   
 
     for (int count = 0; count < this.requests; count++) {
@@ -53,16 +52,14 @@ class RunBenchmark implements Runnable {
 // add data to csv
 //      String[] data = { String.valueOf(Numbers.globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
       String[] data = { String.valueOf(globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
-
-writer.writeNext(data);
-  
-    }
+      writer.writeNext(data);
+      }
 // closing writer connection
-writer.close();
-    }
-    catch (Exception e)   {     // Throwing an exception
-      System.out.println ("Exception is caught");
-    }
+      writer.close();
+      }
+      catch (Exception e)   {     // Throwing an exception
+        System.out.println ("Exception is caught");
+      }
   }
 }
 
