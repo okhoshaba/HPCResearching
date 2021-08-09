@@ -12,11 +12,12 @@ class RunBenchmark implements Runnable {
   String fileName;
   int requests;
 
-  RunBenchmark(String address, String port, String requests, String fileName) {
-    this.address = address;
-    this.port = port;
-    this.requests = Integer.parseInt(requests);
-    this.fileName = fileName;
+//  RunBenchmark(String address, String port, String requests, String fileName) {
+  RunBenchmark(DataForRunBenchmark dataForRunBenchmark) {
+    this.address = dataForRunBenchmark.getAddress();
+    this.port = dataForRunBenchmark.getPort();
+    this.requests = Integer.parseInt(dataForRunBenchmark.getRequests());
+    this.fileName = dataForRunBenchmark.getFileName();
   } 
 
   public void run() {

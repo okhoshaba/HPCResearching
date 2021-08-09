@@ -13,15 +13,17 @@ public class BenchmarkController {
 
     boolean isNumeric, isLoad = true;
 
-    InputData inputData = new InputData();
-    inputData.setAddress(address);
-    inputData.setPort(port);
-    inputData.setSeries(series);
-    inputData.setRequests(requests);
-    inputData.setDurationTime(durationTime);
-    inputData.setFileName(fileName);
+    DataForRunBenchmark dataForRunBenchmark = new DataForRunBenchmark();
+    dataForRunBenchmark.setAddress(address);
+    dataForRunBenchmark.setPort(port);
+    dataForRunBenchmark.setRequests(requests);
+    dataForRunBenchmark.setFileName(fileName);
 
-  	model.addAttribute("address", inputData.getAddress());
+    InputData inputData = new InputData();
+    inputData.setSeries(series);
+    inputData.setDurationTime(durationTime);
+
+  	model.addAttribute("address", dataForRunBenchmark.getAddress());
 
     isNumeric = port.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -29,7 +31,7 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	  model.addAttribute("port", inputData.getPort());
+  	  model.addAttribute("port", dataForRunBenchmark.getPort());
 
     isNumeric = series.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -45,7 +47,7 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	  model.addAttribute("requests", inputData.getRequests());
+  	  model.addAttribute("requests", dataForRunBenchmark.getRequests());
 
     isNumeric = durationTime.chars().allMatch(Character::isDigit);
     if (isNumeric == false) {
@@ -55,10 +57,10 @@ public class BenchmarkController {
     else 
   	  model.addAttribute("durationTime", inputData.getDurationTime());
 
-    model.addAttribute("fileName", inputData.getFileName());
+    model.addAttribute("fileName", dataForRunBenchmark.getFileName());
 
     if (isLoad == true) {
-      inputData.buildBenchmark();
+      inputData.buildBenchmark(dataForRunBenchmark);
       return "results";
     }
     else
