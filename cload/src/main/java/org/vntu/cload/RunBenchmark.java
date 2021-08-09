@@ -24,12 +24,12 @@ class RunBenchmark implements Runnable {
       long start, stop, responceTime;
 
 // For save to Disk:
-File file = new File(this.fileName);
+  File file = new File(this.fileName);
 //File file = new File("data.txt");
-FileWriter outputfile = new FileWriter(file, true);
+  FileWriter outputfile = new FileWriter(file, true);
   
 // create CSVWriter object filewriter object as parameter
-CSVWriter writer = new CSVWriter(outputfile);
+  CSVWriter writer = new CSVWriter(outputfile);
   
 
     for (int count = 0; count < this.requests; count++) {
@@ -39,7 +39,6 @@ CSVWriter writer = new CSVWriter(outputfile);
       process.waitFor();
       stop = System.currentTimeMillis();
       responceTime = stop - start;
-//      Numbers.globalNumber++;
       globalNumber++;
 
 // For diagnostic purpose

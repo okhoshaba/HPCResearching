@@ -45,10 +45,17 @@ public class BenchmarkController {
       isLoad = false;
     }
     else 
-  	model.addAttribute("requests", inputData.getRequests());
+  	  model.addAttribute("requests", inputData.getRequests());
 
-  	model.addAttribute("durationTime", inputData.getDurationTime());
-  	model.addAttribute("fileName", inputData.getFileName());
+    isNumeric = durationTime.chars().allMatch(Character::isDigit);
+    if (isNumeric == false) {
+  	  model.addAttribute("port", "Error: the string 'durationTime' contains a non-numeric sequence!");
+      isLoad = false;
+    }
+    else 
+  	  model.addAttribute("durationTime", inputData.getDurationTime());
+
+    model.addAttribute("fileName", inputData.getFileName());
 
     if (isLoad == true) {
       inputData.buildBenchmark();
