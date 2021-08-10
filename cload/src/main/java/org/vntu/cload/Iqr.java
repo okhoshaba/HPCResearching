@@ -7,15 +7,15 @@ import com.opencsv.CSVReader;
 
 class Iqr {
 
-  public void readData(String file) {
+  public void readData(String fileName) {
     try {
         // Create an object of filereader
         // class with CSV file as a parameter.
-        FileReader filereader = new FileReader(file);
+        FileReader fileReader = new FileReader(fileName);
  
         // create csvReader object passing
         // file reader as a parameter
-        CSVReader csvReader = new CSVReader(filereader);
+        CSVReader csvReader = new CSVReader(fileReader);
         String[] nextRecord;
  
         // we are going to read data line by line

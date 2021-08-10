@@ -70,10 +70,14 @@ public class BenchmarkController {
 	@GetMapping("/iqr")
   public String iqr(@RequestParam(required=false, defaultValue="data.txt") String fileName, Model model) {
 
+// For diagnostic purpose    
     boolean isLoad = true;
 
     DataForRunBenchmark dataForRunBenchmark = new DataForRunBenchmark();
     dataForRunBenchmark.setFileName(fileName);
+
+    Iqr iqr = new Iqr();
+    iqr.readData(fileName);
 
     model.addAttribute("fileName", dataForRunBenchmark.getFileName());
 
