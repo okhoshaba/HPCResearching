@@ -67,5 +67,23 @@ public class BenchmarkController {
   		return "false_results";
 	}
 
+	@GetMapping("/iqr")
+  public String iqr(@RequestParam(required=false, defaultValue="data.txt") String fileName, Model model) {
+
+    boolean isLoad = true;
+
+    DataForRunBenchmark dataForRunBenchmark = new DataForRunBenchmark();
+    dataForRunBenchmark.setFileName(fileName);
+
+    model.addAttribute("fileName", dataForRunBenchmark.getFileName());
+
+    if (isLoad == true) {
+      return "irq_results";
+    }
+    else
+  		return "iqr_false_results";
+	}
+
 }
+
 

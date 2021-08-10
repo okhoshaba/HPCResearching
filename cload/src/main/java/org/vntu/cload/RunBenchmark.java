@@ -42,15 +42,9 @@ class RunBenchmark implements Runnable {
       globalNumber++;
 
 // For diagnostic purpose
-//      System.out.println("number = " + Number.globalNumber++ + " start = " + start + " stop = " + stop + " ; total = ; " + (stop - start));
+//      System.out.println("number = " + Number.globalNumber++ + " start = " + start + " stop = " + stop + " ; total = ; " + responceTime);
 
-// adding header to csv
-//      String[] header = { "Number", "Start", "Stop", "Total" };
-//      writer.writeNext(header);
-
-  
 // add data to csv
-//      String[] data = { String.valueOf(Numbers.globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
       String[] data = { String.valueOf(globalNumber), String.valueOf(start), String.valueOf(stop), String.valueOf(responceTime) };
       writer.writeNext(data);
       }
