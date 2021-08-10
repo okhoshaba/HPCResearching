@@ -61,10 +61,10 @@ public class BenchmarkController {
 
     if (isLoad == true) {
       dataForBuildBenchmark.buildBenchmark(dataForRunBenchmark);
-      return "results";
+      return "data_results";
     }
     else
-  		return "false_results";
+  		return "data_false_results";
 	}
 
 	@GetMapping("/iqr")
