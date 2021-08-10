@@ -40,7 +40,6 @@ class Iqr {
     }
   }
 
-//  public List<Double> getOutliers(List<Double> input) {
   private List<Double> getOutliers(List<Double> input) {
     List<Double> output = new ArrayList<Double>();
     List<Double> data1 = new ArrayList<Double>();
@@ -58,6 +57,9 @@ class Iqr {
         double iqr = q3 - q1;
         double lowerFence = q1 - 1.5 * iqr;
         double upperFence = q3 + 1.5 * iqr;
+        System.out.println("iqr:  " + iqr);
+        System.out.println("min:  " + input.get(0));
+        System.out.println("max:  " + input.get(input.size() - 1));
         System.out.println("lowerFence:  " + lowerFence);
         System.out.println("upperFence:  " + upperFence);
         for (int i = 0; i < input.size(); i++) {
