@@ -40,7 +40,8 @@ class Iqr {
     }
   }
 
-  public List<Double> getOutliers(List<Double> input) {
+//  public List<Double> getOutliers(List<Double> input) {
+  private List<Double> getOutliers(List<Double> input) {
     List<Double> output = new ArrayList<Double>();
     List<Double> data1 = new ArrayList<Double>();
     List<Double> data2 = new ArrayList<Double>();
