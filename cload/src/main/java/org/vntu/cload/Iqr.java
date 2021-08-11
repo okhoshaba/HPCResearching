@@ -40,30 +40,36 @@ class Iqr {
 
   private List<Double> getOutliers(List<Double> inputDataIqr) {
     List<Double> outputDataIqr = new ArrayList<Double>();
-    List<Double> data1 = new ArrayList<Double>();
-    List<Double> data2 = new ArrayList<Double>();
+    List<Double> dataFirstHalf = new ArrayList<Double>();
+    List<Double> dataSecondHalf = new ArrayList<Double>();
 
     if (inputDataIqr.size() % 2 == 0) {
-      data1 = inputDataIqr.subList(0, inputDataIqr.size() / 2);
-      data2 = inputDataIqr.subList(inputDataIqr.size() / 2, inputDataIqr.size());
+      dataFirstHalf = inputDataIqr.subList(0, inputDataIqr.size() / 2);
+      dataSecondHalf = inputDataIqr.subList(inputDataIqr.size() / 2, inputDataIqr.size());
     } else {
-      data1 = inputDataIqr.subList(0, inputDataIqr.size() / 2);
-      data2 = inputDataIqr.subList(inputDataIqr.size() / 2 + 1, inputDataIqr.size());
+      dataFirstHalf = inputDataIqr.subList(0, inputDataIqr.size() / 2);
+      dataSecondHalf = inputDataIqr.subList(inputDataIqr.size() / 2 + 1, inputDataIqr.size());
     }
 
-    double q1 = getMedian(data1);
-    double q3 = getMedian(data2);
-    double iqr = q3 - q1;
-    double lowerFence = q1 - 1.5 * iqr;
-    double upperFence = q3 + 1.5 * iqr;
+    double perc25 = getMedian(dataFirstHalf);
+    double perc75 = getMedian(dataSecondHalf);
+    double iqr = perc75 - perc25;
+    double firstLowerFence = perc25 - 1.5 * iqr;
+    double firstUpperFence = perc75 + 1.5 * iqr;
+    double secondLowerFence = perc25 - 3 * iqr;
+    double secondUpperFence = perc75 + 3 * iqr;
 
-    System.out.println("iqr:  " + iqr);
-    System.out.println("min:  " + inputDataIqr.get(0));
-    System.out.println("max:  " + inputDataIqr.get(inputDataIqr.size() - 1));
-    System.out.println("lowerFence:  " + lowerFence);
-    System.out.println("upperFence:  " + upperFence);
+    System.out.println("First Quartile (25th percentiles):  " + perc25);
+    System.out.println("Third Quartile (75th percentiles):  " + perc75);
+    System.out.println("Interquartile Range (IQR):  " + iqr);
+    System.out.println("Min:  " + inputDataIqr.get(0));
+    System.out.println("Max:  " + inputDataIqr.get(inputDataIqr.size() - 1));
+    System.out.println("First Lower Fence:  " + firstLowerFence);
+    System.out.println("First Upper Fence:  " + firstUpperFence);
+    System.out.println("Second Lower Fence:  " + secondLowerFence);
+    System.out.println("Second Upper Fence:  " + secondUpperFence);
     for (int count = 0; count < inputDataIqr.size(); count++) {
-      if (inputDataIqr.get(count) < lowerFence || inputDataIqr.get(count) > upperFence)
+      if (inputDataIqr.get(count) < firstLowerFence || inputDataIqr.get(count) > firstUpperFence)
          outputDataIqr.add(inputDataIqr.get(count));
       }
     return outputDataIqr;
