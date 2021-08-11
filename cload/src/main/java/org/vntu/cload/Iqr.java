@@ -1,6 +1,5 @@
 package org.vntu.cload;
 
-//import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,17 +12,16 @@ class Iqr {
 
   List<Double> dataIQR = new ArrayList<Double>();
 
-  public void readData(String fileName) {
+  public void readData(String inputFile) {
     try {
         // Create an object of filereader
         // class with CSV file as a parameter.
-        FileReader fileReader = new FileReader(fileName);
+        FileReader fileReader = new FileReader(inputFile);
  
         // create csvReader object passing
         // file reader as a parameter
         CSVReader csvReader = new CSVReader(fileReader);
         String[] nextRecord;
-//        List<Double> dataIQR = new ArrayList<Double>();
 
         // we are going to read data line by line
         while ((nextRecord = csvReader.readNext()) != null) {
