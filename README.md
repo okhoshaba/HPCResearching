@@ -1,4 +1,7 @@
-# benchmark
+# HPCResearching
+
+HPCResearching - A Software Environment for High-Performance Computing research and development.
+
 
 1. Run docker:
 sudo docker run -d -p 8181:80 khoshaba/ubuntu_apache_html
