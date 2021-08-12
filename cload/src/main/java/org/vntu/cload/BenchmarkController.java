@@ -77,7 +77,7 @@ public class BenchmarkController {
     dataForIqr.setInputFile(inputFile);
 
     Iqr iqr = new Iqr();
-    iqr.readData(inputFile);
+    iqr.processingData(dataForIqr);
 
     model.addAttribute("fileName", dataForIqr.getInputFile());
 

@@ -12,11 +12,11 @@ class Iqr {
 
   List<Double> dataIQR = new ArrayList<Double>();
 
-  public void readData(String inputFile) {
+  public void processingData(DataForIqr dataForIqr) {
     try {
         // Create an object of filereader
         // class with CSV file as a parameter.
-        FileReader fileReader = new FileReader(inputFile);
+        FileReader fileReader = new FileReader(dataForIqr.getInputFile());
  
         // create csvReader object passing
         // file reader as a parameter
