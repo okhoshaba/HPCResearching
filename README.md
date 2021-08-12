@@ -34,12 +34,12 @@ sudo docker run -d -p 8181:80 khoshaba/ubuntu_apache_html
 For build cload module:
 -------
 
-in cload catalog ./mvnw clean package 
+in cload catalog:   ./mvnw clean package 
 
 For run cload module:
 -------
 
-in cload catalog java -jar target/cload-0.0.3-SNAPSHOT.jar
+in cload catalog:   java -jar target/cload-0.0.3-SNAPSHOT.jar
 
 Or for build and run cload module:
 -------
