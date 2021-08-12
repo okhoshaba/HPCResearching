@@ -2,6 +2,23 @@
 
 HPCResearching - A Software Environment for High-Performance Computing research and development.
 
+HPC Researching is a modular and service-oriented software environment for studying the load impact of requests on services in computer systems.
+
+The main purpose of the software environment is to determine quantitative and qualitative assessments of the load impacts on services in computer systems.
+
+License
+-------
+
+HPCResearching source code is licensed under the GPL v3.0. See `LICENSE` for details. 
+
+ 
+Getting HPCResearching
+--------------    
+ 
+Getting HPCResearching is as easy as:
+ 
+    git clone git@github.com:okhoshaba/HPCResearching.git
+
 
 1. Run docker:
 sudo docker run -d -p 8181:80 khoshaba/ubuntu_apache_html
