@@ -11,6 +11,7 @@ import com.opencsv.CSVReader;
 class Iqr {
 
   List<Double> dataIQR = new ArrayList<Double>();
+  List<Double> dataFirstLowerFence = new ArrayList<Double>();
 
   public void processingData(DataForIqr dataForIqr) {
     try {
@@ -32,6 +33,7 @@ class Iqr {
         csvReader.close();
         Collections.sort(dataIQR);
         System.out.println("Massive Outliers: " + getOutliers(dataIQR));
+        System.out.println("Massive Outliers for First Lower Fence: " + dataFirstLowerFence.toString());
     }
     catch (Exception e) {
         e.printStackTrace();
@@ -70,7 +72,8 @@ class Iqr {
     System.out.println("Second Upper Fence:  " + secondUpperFence);
     for (int count = 0; count < inputDataIqr.size(); count++) {
       if (inputDataIqr.get(count) < firstLowerFence || inputDataIqr.get(count) > firstUpperFence)
-         outputDataIqr.add(inputDataIqr.get(count));
+        dataFirstLowerFence.add(inputDataIqr.get(count));
+        outputDataIqr.add(inputDataIqr.get(count));
       }
     return outputDataIqr;
   }
