@@ -31,18 +31,38 @@ Each module of the software environment runs in a container. For example, to stu
 
 sudo docker run -d -p 8181:80 khoshaba/ubuntu_apache_html
 
-2. For run cload module:
+For build cload module:
+
+in cload catalog ./mvnw clean package 
+
+For run cload module:
+
+in cload catalog java -jar target/cload-0.0.3-SNAPSHOT.jar
+
+Or for build and run cload module:
+
 ./mvnw spring-boot:run
+
+In another terminal, you can run:
+
 curl localhost:8080/cload
+
 curl localhost:8080/cload?address=localhost
+
 curl localhost:8080/cload?address=localhost\&port=8181
+
 curl localhost:8080/cload?address=localhost\&port=8181\&series=3
+
 curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5
+
 curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5\&dt=17
+
 curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5\&dt=17\&fileName=data22.txt
 
-3. For iqr data processing:
+For iqr data processing:
+
 curl localhost:8080/iqr
+
 curl localhost:8080/iqr?fileName=data22
 
 For useful links:
