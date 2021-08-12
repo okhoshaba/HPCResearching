@@ -11,6 +11,14 @@ License
 
 HPCResearching source code is licensed under the GPL v3.0. See `LICENSE` for details. 
 
+Build and Develop Requirements    
+------------------    
+To build and develop a software environment, you need requirements:
+
+- Maven;
+
+- Docker.
+
  
 Getting HPCResearching
 --------------    
@@ -19,8 +27,8 @@ Getting HPCResearching is as easy as:
  
     git clone git@github.com:okhoshaba/HPCResearching.git
 
+Each module of the software environment runs in a container. For example, to study a web service as an object of research, you need to run the command:
 
-1. Run docker:
 sudo docker run -d -p 8181:80 khoshaba/ubuntu_apache_html
 
 2. For run cload module:
@@ -39,12 +47,7 @@ curl localhost:8080/iqr?fileName=data22
 
 For useful links:
 -----------------------------------
-https://www.geeksforgeeks.org/writing-a-csv-file-in-java-using-opencsv/
-https://attacomsian.com/blog/read-write-csv-files-core-java
-https://www.geeksforgeeks.org/reading-csv-file-java-using-opencsv/?ref=rp
+...
 
-ToDo:
-Coreect (edit) code in Iqr class
-Define mediana, deviation.
 
 
