@@ -12,6 +12,9 @@ class Iqr {
 
   List<Double> dataIQR = new ArrayList<Double>();
   List<Double> dataFirstLowerFence = new ArrayList<Double>();
+  List<Double> dataSecondLowerFence = new ArrayList<Double>();
+  List<Double> dataFirstUpperFence = new ArrayList<Double>();
+  List<Double> dataSecondUpperFence = new ArrayList<Double>();
 
   public void processingData(DataForIqr dataForIqr) {
     try {
@@ -32,16 +35,21 @@ class Iqr {
         }
         csvReader.close();
         Collections.sort(dataIQR);
-        System.out.println("Massive Outliers: " + getOutliers(dataIQR));
+//        System.out.println("Massive Outliers: " + getOutliers(dataIQR));
+        defineOutliers(dataIQR);
         System.out.println("Massive Outliers for First Lower Fence: " + dataFirstLowerFence.toString());
+        System.out.println("Massive Outliers for Second Lower Fence: " + dataSecondLowerFence.toString());
+        System.out.println("Massive Outliers for First Upper Fence: " + dataFirstUpperFence.toString());
+        System.out.println("Massive Outliers for Second Upper Fence: " + dataSecondUpperFence.toString());
     }
     catch (Exception e) {
         e.printStackTrace();
     }
   }
 
-  private List<Double> getOutliers(List<Double> inputDataIqr) {
-    List<Double> outputDataIqr = new ArrayList<Double>();
+//  private List<Double> getOutliers(List<Double> inputDataIqr) {
+  private void defineOutliers(List<Double> inputDataIqr) {
+//    List<Double> outputDataIqr = new ArrayList<Double>();
     List<Double> dataFirstHalf = new ArrayList<Double>();
     List<Double> dataSecondHalf = new ArrayList<Double>();
 
@@ -66,16 +74,27 @@ class Iqr {
     System.out.println("Interquartile Range (IQR):  " + iqr);
     System.out.println("Min:  " + inputDataIqr.get(0));
     System.out.println("Max:  " + inputDataIqr.get(inputDataIqr.size() - 1));
+    System.out.println("Second Lower Fence:  " + secondLowerFence);
     System.out.println("First Lower Fence:  " + firstLowerFence);
     System.out.println("First Upper Fence:  " + firstUpperFence);
-    System.out.println("Second Lower Fence:  " + secondLowerFence);
     System.out.println("Second Upper Fence:  " + secondUpperFence);
     for (int count = 0; count < inputDataIqr.size(); count++) {
-      if (inputDataIqr.get(count) < firstLowerFence || inputDataIqr.get(count) > firstUpperFence)
-        dataFirstLowerFence.add(inputDataIqr.get(count));
-        outputDataIqr.add(inputDataIqr.get(count));
+      if (inputDataIqr.get(count) < secondLowerFence)
+        dataSecondLowerFence.add(inputDataIqr.get(count));
+      else
+        if (inputDataIqr.get(count) < firstLowerFence)
+          dataFirstLowerFence.add(inputDataIqr.get(count));
+      else
+      if (inputDataIqr.get(count) > secondUpperFence)
+        dataSecondUpperFence.add(inputDataIqr.get(count));
+      else
+        if (inputDataIqr.get(count) > secondUpperFence)
+          dataFirstUpperFence.add(inputDataIqr.get(count));
+//      if (inputDataIqr.get(count) < firstLowerFence || inputDataIqr.get(count) > firstUpperFence)
+//        dataFirstLowerFence.add(inputDataIqr.get(count));
+//        outputDataIqr.add(inputDataIqr.get(count));
       }
-    return outputDataIqr;
+//    return outputDataIqr;
   }
 
   private double getMedian(List<Double> data) {
