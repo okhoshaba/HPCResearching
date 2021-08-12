@@ -21,7 +21,7 @@ To build and develop a software environment, you need requirements:
 
  
 Getting HPCResearching
---------------    
+-------
  
 Getting HPCResearching is as easy as:
  
@@ -32,18 +32,22 @@ Each module of the software environment runs in a container. For example, to stu
 sudo docker run -d -p 8181:80 khoshaba/ubuntu_apache_html
 
 For build cload module:
+-------
 
 in cload catalog ./mvnw clean package 
 
 For run cload module:
+-------
 
 in cload catalog java -jar target/cload-0.0.3-SNAPSHOT.jar
 
 Or for build and run cload module:
+-------
 
 ./mvnw spring-boot:run
 
 In another terminal, you can run:
+-------
 
 curl localhost:8080/cload
 
@@ -60,13 +64,14 @@ curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5\&dt
 curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5\&dt=17\&fileName=data22.txt
 
 For iqr data processing:
+-------
 
 curl localhost:8080/iqr
 
 curl localhost:8080/iqr?fileName=data22
 
 For useful links:
------------------------------------
+-------
 ...
 
 
