@@ -17,6 +17,8 @@ To build and develop a software environment, you need requirements:
 
 - Maven;
 
+- Java 1.8 and more;
+
 - Docker.
 
  
@@ -72,7 +74,13 @@ curl localhost:8080/iqr?fileName=data22
 
 For useful links:
 -------
-...
 
+https://cloud.google.com/compute/docs/disks/benchmarking-pd-performance
+
+https://dzone.com/articles/java-sequential-io-performance
+
+https://mechanical-sympathy.blogspot.com/2011/12/java-sequential-io-performance.html
+
+http://tutorials.jenkov.com/java-performance/memory-management.html
 
 
