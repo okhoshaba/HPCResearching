@@ -14,10 +14,10 @@ public class BenchmarkController {
 
 	@GetMapping("/cload")
 /**    
-* The method loading creates a load impact on the research object.
-* factor specific by the parameter factor    
+* The method loading is for generates and checks a string for loading impact on the research object.
 * @param address The address parameter is for specifying the hostname on which benchmark will perform the load action.
 * @param port The port parameter is for specifying the port number on which benchmark will perform the load action.
+* @return The string containing the name of the html file to which the generated parameters are passed.
 *
 */    
   public String loading(@RequestParam(required = false, defaultValue = "localhost") String address, @RequestParam(required=false, defaultValue="8181") String port, @RequestParam(required = false, defaultValue = "50") String series, @RequestParam(required = false, defaultValue = "1") String requests, @RequestParam(required=false, defaultValue="3") String durationTime, @RequestParam(required=false, defaultValue="data.txt") String fileName, Model model) {
