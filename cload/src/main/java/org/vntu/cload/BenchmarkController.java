@@ -6,9 +6,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+/**
+* The class Benchmark controller for the formation and parsing of the input line for the service in the computing system.
+* @author Oleksandr Khoshaba
+*/ 
 public class BenchmarkController {
 
 	@GetMapping("/cload")
+/**    
+* The method loading creates a load impact on the research object.
+* factor specific by the parameter factor    
+* @param address The address parameter is for specifying the hostname on which benchmark will perform the load action.
+* @param port The port parameter is for specifying the port number on which benchmark will perform the load action.
+*
+*/    
   public String loading(@RequestParam(required = false, defaultValue = "localhost") String address, @RequestParam(required=false, defaultValue="8181") String port, @RequestParam(required = false, defaultValue = "50") String series, @RequestParam(required = false, defaultValue = "1") String requests, @RequestParam(required=false, defaultValue="3") String durationTime, @RequestParam(required=false, defaultValue="data.txt") String fileName, Model model) {
 
     boolean isNumeric, isLoad = true;
