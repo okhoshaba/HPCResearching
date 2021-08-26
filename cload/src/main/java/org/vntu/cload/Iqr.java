@@ -35,7 +35,6 @@ class Iqr {
         }
         csvReader.close();
         Collections.sort(dataIQR);
-//        System.out.println("Massive Outliers: " + getOutliers(dataIQR));
         defineOutliers(dataIQR);
         System.out.println("Massive Outliers for First Lower Fence: " + dataFirstLowerFence.toString());
         System.out.println("Massive Outliers for Second Lower Fence: " + dataSecondLowerFence.toString());
@@ -47,9 +46,7 @@ class Iqr {
     }
   }
 
-//  private List<Double> getOutliers(List<Double> inputDataIqr) {
   private void defineOutliers(List<Double> inputDataIqr) {
-//    List<Double> outputDataIqr = new ArrayList<Double>();
     List<Double> dataFirstHalf = new ArrayList<Double>();
     List<Double> dataSecondHalf = new ArrayList<Double>();
 
@@ -64,12 +61,14 @@ class Iqr {
     double perc25 = getMedian(dataFirstHalf);
     double perc75 = getMedian(dataSecondHalf);
     double iqr = perc75 - perc25;
+    double perc50 = (perc75 + perc25) / 2;
     double firstLowerFence = perc25 - 1.5 * iqr;
     double firstUpperFence = perc75 + 1.5 * iqr;
     double secondLowerFence = perc25 - 3 * iqr;
     double secondUpperFence = perc75 + 3 * iqr;
 
     System.out.println("First Quartile (25th percentiles):  " + perc25);
+    System.out.println("Second Quartile (25th percentiles):  " + perc50);
     System.out.println("Third Quartile (75th percentiles):  " + perc75);
     System.out.println("Interquartile Range (IQR):  " + iqr);
     System.out.println("Min:  " + inputDataIqr.get(0));
