@@ -65,6 +65,16 @@ curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5\&dt
 
 curl localhost:8080/cload?address=localhost\&port=8181\&series=3\&requests=5\&dt=17\&fileName=data22.txt
 
+
+
+curl localhost:8080/cload?address=u1\&port=80\&series=20\&requests=1
+(20 series in 1 sec => 50ms period of time)
+
+curl localhost:8080/cload?address=u1\&port=80\&series=10\&requests=1
+(10 series in 1 sec => 100ms period of time)
+
+
+
 For iqr data processing:
 -------
 
