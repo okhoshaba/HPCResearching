@@ -20,7 +20,7 @@ public class BenchmarkController {
 * @return The string containing the name of the html file to which the generated parameters are passed.
 *
 */    
-  public String loading(@RequestParam(required = false, defaultValue = "localhost") String address, @RequestParam(required=false, defaultValue="8181") String port, @RequestParam(required = false, defaultValue = "50") String series, @RequestParam(required = false, defaultValue = "1") String requests, @RequestParam(required=false, defaultValue="3") String durationTime, @RequestParam(required=false, defaultValue="data.txt") String fileName, Model model) {
+  public String loading(@RequestParam(required = false, defaultValue = "localhost") String address, @RequestParam(required=false, defaultValue="8181") String port, @RequestParam(required = false, defaultValue = "50") String series, @RequestParam(required = false, defaultValue = "1") String requests, @RequestParam(required=false, defaultValue="1") String durationTime, @RequestParam(required=false, defaultValue="data.txt") String fileName, Model model) {
 
     boolean isNumeric, isLoad = true;
 
